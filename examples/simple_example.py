@@ -3,6 +3,7 @@ import sys
 from acmd import Cmd
 
 class FooCmd(Cmd):
+
     prompt = '(test)'
 
     def do_hello(self, arg):

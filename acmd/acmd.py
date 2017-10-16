@@ -1,6 +1,6 @@
 import string, sys
 import asyncio
-import cmd
+
 PROMPT = '(acmd) '
 IDENTCHARS = string.ascii_letters + string.digits + '_'
 
@@ -271,21 +271,3 @@ class Cmd:
                 texts[col] = texts[col].ljust(colwidths[col])
             self.stdout.write("%s\n"%str("  ".join(texts)))
 
-
-class FooCmd(Cmd):
-    prompt = '(test)'
-
-    def do_hello(self, arg):
-        print('hello:{}'.format(arg))
-
-
-if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    foo = FooCmd()
-
-    foo.cmdloop(loop=loop)
-
-    try:
-        loop.run_forever()  # our cmd will run automatically from this moment
-    except KeyboardInterrupt:
-        loop.stop()
